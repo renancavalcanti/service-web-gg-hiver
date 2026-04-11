@@ -1,0 +1,33 @@
+.signup-card {
+  max-width: 400px;
+  margin: 40px auto;
+}
+
+.signup-title {
+  text-align: center;
+  margin-bottom: 24px;
+  color: #2d3748;
+}
+
+.error-message {
+  margin-bottom: 16px;
+}
+
+.signup-button {
+  width: 100%;
+}
+
+.signup-footer {
+  text-align: center;
+  margin-top: 16px;
+  color: #718096;
+}
+
+.signup-link {
+  color: #667eea;
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
