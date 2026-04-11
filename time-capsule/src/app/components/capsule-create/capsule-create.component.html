@@ -1,0 +1,32 @@
+<div class="card form-card">
+  <h2 class="form-title">Send Capsule</h2>
+
+  <form (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label>Message *</label>
+      <textarea [(ngModel)]="content" name="content" placeholder="Write your message..." rows="4"></textarea>
+    </div>
+
+    <div class="form-group">
+      <label>To</label>
+      <input [(ngModel)]="recipientEmail" name="recipientEmail" placeholder="friend@example.com" />
+    </div>
+
+    <div class="form-group">
+      <label>Open Date *</label>
+      <input [(ngModel)]="openAt" name="openAt" type="datetime-local" />
+    </div>
+
+    <div class="form-group">
+      <label>Image URL</label>
+      <input [(ngModel)]="imageUrl" name="imageUrl" type="url" placeholder="https://www.friend.com/image.jpg"/>
+    </div>
+
+    <div *ngIf="error" class="error error-message">{{error}}</div>
+
+    <div class="form-actions">
+      <button type="submit" class="btn btn-primary">Send Capsule</button>
+      <button type="button" class="btn btn-secondary" (click)="onCancel()">Cancel</button>
+    </div>
+  </form>
+</div>

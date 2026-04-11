@@ -20,8 +20,8 @@ export class LoginComponent {
   onSubmit(): void {
     this.authService.login({email: this.email, password: this.password}).subscribe({
       next: (res) => {
-        console.log(res)
-        this.router.navigate(['/feed'])
+        this.authService.handleAuth(res);
+        this.router.navigate(['/feed']);
       },
       error: (err) => {
         this.error = err.error.message;

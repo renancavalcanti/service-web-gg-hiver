@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class AuthService {
-  private apiUrl = "http://localhost:5000/auth"
+  private apiUrl = "http://localhost:5000/auth";
 
   constructor(private http: HttpClient) { }
 
@@ -17,5 +17,13 @@ export class AuthService {
 
   login(data: LoginRequest): Observable<AuthResponse>{
     return this.http.post<AuthResponse>(`${this.apiUrl}/login`, data);
+  }
+
+  getToken(): string | null {
+    return localStorage.getItem('token');
+  }
+
+  handleAuth(response: AuthResponse): void {
+    localStorage.setItem('token', response.token);
   }
 }

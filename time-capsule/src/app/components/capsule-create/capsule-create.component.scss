@@ -1,0 +1,26 @@
+.form-card {
+  max-width: 500px;
+  margin: 20px auto;
+  padding: 24px;
+}
+
+.form-title {
+  margin-bottom: 20px;
+  color: #2d3748;
+  font-size: 20px;
+}
+
+.hint {
+  color: #718096;
+  font-size: 12px;
+}
+
+.error-message {
+  margin-bottom: 16px;
+}
+
+.form-actions {
+  display: flex;
+  gap: 12px;
+  margin-top: 20px;
+}

@@ -1,0 +1,55 @@
+.feed-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.tabs {
+  display: flex;
+  gap: 8px;
+}
+
+.tab-btn {
+  padding: 10px 16px;
+  border: none;
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.2);
+  color: white;
+  cursor: pointer;
+  font-size: 13px;
+  transition: all 0.3s;
+  position: relative;
+
+  &:hover {
+    background: rgba(255, 255, 255, 0.3);
+  }
+
+  &.active {
+    background: white;
+    color: #667eea;
+  }
+}
+
+.notification-badge {
+  background: #fc8181;
+  color: white;
+  border-radius: 8px;
+  padding: 1px 5px;
+  font-size: 10px;
+  margin-left: 4px;
+}
+
+.new-capsule-btn {
+  padding: 10px 20px;
+  font-size: 14px;
+  text-decoration: none;
+}
+
+.feed-title {
+  color: white;
+  margin-bottom: 12px;
+  font-size: 16px;
+}
