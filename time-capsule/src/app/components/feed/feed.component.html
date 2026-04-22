@@ -13,3 +13,9 @@
 
   <a routerLink="/capsules/create" class="btn btn-primary new-capsule-btn">+ New Capsule</a>
 </div>
+
+<app-capsule-list
+  [capsules]="capsules"
+  [currentUser]="currentUser"
+  (deleteCapsule)="deleteCapsule($event)">
+</app-capsule-list>

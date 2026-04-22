@@ -15,4 +15,16 @@ export class CapsuleService {
   createCapsule(data: CreateCapsuleRequest): Observable<{message: string, capsule: Capsule}>{
     return this.http.post<{message: string, capsule: Capsule}>(`${this.apiUrl}/`, data);
   }
+
+  getAllCapsules(): Observable<{ capsules: Capsule[] }> {
+    return this.http.get<{ capsules: Capsule[] }>(this.apiUrl);
+  }
+
+  getReceivedCapsules(): Observable<{ capsules: Capsule[] }> {
+    return this.http.get<{ capsules: Capsule[] }>(`${this.apiUrl}/received`);
+  }
+
+  getSentCapsules(): Observable<{ capsules: Capsule[] }> {
+    return this.http.get<{ capsules: Capsule[] }>(`${this.apiUrl}/sent`);
+  }
 }

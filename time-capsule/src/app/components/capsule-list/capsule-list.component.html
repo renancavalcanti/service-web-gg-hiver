@@ -1,0 +1,46 @@
+<div class="capsules-container">
+  <div
+    *ngFor="let capsule of capsules"
+    class="capsule-card"
+    [class.locked]="capsule.isLocked"
+    [class.clickable]="capsule.isLocked && canOpen(capsule)"
+    (click)="onCardClick(capsule)">
+
+    <div class="capsule-header">
+      <div class="author-info">
+        <span class="author">{{ capsule.author.name }}</span>
+        <span class="badge" *ngIf="capsule.recipient">
+          → {{ capsule.recipient.name }}
+        </span>
+      </div>
+      <span class="date">{{ formatDate(capsule.createdAt) }}</span>
+    </div>
+
+    <div *ngIf="capsule.isLocked" class="locked-content">
+      <div class="lock-icon">🔒</div>
+      <div class="lock-message">
+        <span *ngIf="!canOpen(capsule)">Locked</span>
+        <span *ngIf="canOpen(capsule)">Tap to open</span>
+      </div>
+      <div class="lock-timer" *ngIf="!canOpen(capsule)">{{ getTimeUntilOpen(capsule.openAt) }}</div>
+      <div class="lock-date">Opens {{ formatDate(capsule.openAt) }}</div>
+    </div>
+
+    <ng-container *ngIf="!capsule.isLocked">
+      <div class="capsule-content">{{ capsule.content }}</div>
+      <img *ngIf="capsule.imageUrl" [src]="capsule.imageUrl" class="capsule-image" alt="Capsule image">
+    </ng-container>
+
+    <div class="capsule-footer" *ngIf="canEdit(capsule)">
+      <a
+        class="btn btn-secondary btn-small">
+        Edit
+      </a>
+      <button class="btn btn-danger btn-small" (click)="onDelete(capsule)">Delete</button>
+    </div>
+  </div>
+
+  <div *ngIf="capsules.length === 0" class="empty-state">
+    No capsules found.
+  </div>
+</div>
