@@ -27,4 +27,12 @@ export class CapsuleService {
   getSentCapsules(): Observable<{ capsules: Capsule[] }> {
     return this.http.get<{ capsules: Capsule[] }>(`${this.apiUrl}/sent`);
   }
+
+  openCapsule(id: string): Observable<{ capsule: Capsule }> {
+    return this.http.post<{ capsule: Capsule }>(`${this.apiUrl}/${id}/open`, {});
+  }
+
+  deleteCapsule(id: string): Observable<{ message: string }> {
+    return this.http.delete<{ message: string }>(`${this.apiUrl}/${id}`);
+  }
 }

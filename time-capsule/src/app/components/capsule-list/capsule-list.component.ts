@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { Capsule } from '../../models/capsule.model';
 import { User } from '../../models/user.model';
 import { CapsuleService } from '../../services/capsule.service';
@@ -17,7 +17,7 @@ export class CapsuleListComponent {
   @Input() currentUser: User | null = null;
   @Output() deleteCapsule = new EventEmitter<Capsule>();
 
-  constructor(private capsuleService: CapsuleService) {}
+  constructor(private capsuleService: CapsuleService, private router: Router) {}
 
   canEdit(capsule: Capsule): boolean {
     const currentUserId = this.currentUser?.id;
@@ -63,7 +63,16 @@ export class CapsuleListComponent {
 
   onCardClick(capsule: Capsule): void {
     if (capsule.isLocked && this.canOpen(capsule)) {
-      // this.capsuleService.openCapsule
+      this.capsuleService.openCapsule(capsule._id).subscribe({
+        next: (response) => {
+          console.log(response);
+          this.router.navigate(['/feed']);
+          Object.assign(capsule, response.capsule);
+        },
+        error: (err) => {
+          console.log(err);
+        }
+      });
     }
   }
 

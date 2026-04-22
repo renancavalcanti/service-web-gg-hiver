@@ -31,9 +31,9 @@
       <img *ngIf="capsule.imageUrl" [src]="capsule.imageUrl" class="capsule-image" alt="Capsule image">
     </ng-container>
 
-    <div class="capsule-footer" *ngIf="canEdit(capsule)">
+    <div class="capsule-footer">
       <a
-        class="btn btn-secondary btn-small">
+        class="btn btn-secondary btn-small" *ngIf="canEdit(capsule)">
         Edit
       </a>
       <button class="btn btn-danger btn-small" (click)="onDelete(capsule)">Delete</button>

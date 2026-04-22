@@ -104,6 +104,18 @@ export class FeedComponent implements OnInit {
   }
 
   deleteCapsule(capsule: Capsule): void {
-    // this.capsuleService.deleteCapsule
+
+    if(!confirm("Are you sure you want to delete this capsule?")){
+      return;
+    }
+
+    this.capsuleService.deleteCapsule(capsule._id).subscribe({
+      next: () => {
+        this.loadCapsules();
+      },
+      error: (err) => {
+        console.log(err);
+      }
+    });
   }
 }
