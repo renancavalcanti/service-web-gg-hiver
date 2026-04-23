@@ -6,6 +6,8 @@ import { CapsuleService } from '../../services/capsule.service';
 import { Capsule } from '../../models/capsule.model';
 import { User } from '../../models/user.model';
 import { Observable } from 'rxjs';
+import { SocketService } from '../../services/socket.service';
+import { AuthService } from '../../services/auth.service';
 
 type TabType = 'all' | 'received' | 'sent';
 
@@ -23,8 +25,25 @@ export class FeedComponent implements OnInit {
   newReceivedCount = 0;
 
   constructor(
-    private capsuleService: CapsuleService,
-  ) {}
+    private readonly capsuleService: CapsuleService,
+    private readonly socketService: SocketService,
+    private readonly authService: AuthService
+  ) {
+    this.currentUser = this.authService.getCurrentUser();
+    if(this.currentUser){
+      this.socketService.joinRoom(this.currentUser.id);
+    }
+
+    this.socketService.onCapsuleCreate().subscribe((capsule) => {
+      console.log(capsule)
+      console.log(this.currentUser)
+      if(this.currentUser?.id === capsule.author._id || this.currentUser?.id === capsule.recipient._id){
+        this.loadCapsules();
+        //this.capsules.unshift(this.formatCapsule(capsule))
+      }
+
+    });
+  }
 
   ngOnInit(): void {
     this.loadCapsules();
