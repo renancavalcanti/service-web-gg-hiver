@@ -35,4 +35,12 @@ export class CapsuleService {
   deleteCapsule(id: string): Observable<{ message: string }> {
     return this.http.delete<{ message: string }>(`${this.apiUrl}/${id}`);
   }
+
+  getCapsuleById(id: string): Observable<{ capsule: Capsule }>{
+    return this.http.get<{ capsule: Capsule }>(`${this.apiUrl}/${id}`);
+  }
+
+  updateCapsule(id: string, data: CreateCapsuleRequest): Observable<{message: string, capsule: Capsule}>{
+    return this.http.patch<{message: string, capsule: Capsule}>(`${this.apiUrl}/${id}`, data);
+  }
 }

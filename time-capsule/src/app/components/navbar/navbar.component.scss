@@ -1,0 +1,36 @@
+.navbar {
+  background: white;
+  padding: 16px 24px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.logo {
+  font-size: 24px;
+  font-weight: bold;
+  color: #667eea;
+}
+
+.nav-links {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+
+  a {
+    color: #4a5568;
+    text-decoration: none;
+    cursor: pointer;
+
+    &:hover {
+      color: #667eea;
+    }
+  }
+
+  span {
+    color: #4a5568;
+    font-weight: 500;
+  }
+}

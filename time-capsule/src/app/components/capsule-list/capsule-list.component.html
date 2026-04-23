@@ -33,7 +33,9 @@
 
     <div class="capsule-footer">
       <a
-        class="btn btn-secondary btn-small" *ngIf="canEdit(capsule)">
+        class="btn btn-secondary btn-small" *ngIf="canEdit(capsule)"
+        [routerLink] = "['/capsules/edit', capsule._id]"
+        >
         Edit
       </a>
       <button class="btn btn-danger btn-small" (click)="onDelete(capsule)">Delete</button>
